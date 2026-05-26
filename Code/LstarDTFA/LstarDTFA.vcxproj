@@ -138,6 +138,7 @@
     <ClInclude Include="Counterexample.h" />
     <ClInclude Include="DAGTree.h" />
     <ClInclude Include="DistributivityTest.h" />
+    <ClInclude Include="elimination_test.h" />
     <ClInclude Include="Lstar.h" />
     <ClInclude Include="quotient_distributivity_automata.h" />
     <ClInclude Include="TermRewritingSystem.h" />

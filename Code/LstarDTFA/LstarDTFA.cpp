@@ -5,6 +5,7 @@
 #include "DistributivityTest.h"
 #include "Tests.h"
 #include "calculate_membership_queries_number_to_mock_equivalent_query.h"
+#include "elimination_test.h"
 
 
 void run_blind_teacher_experiment()
@@ -81,11 +82,18 @@ int main()
     //test::test5(20);
 
     //std::cout << "Connectivity Test\n\n";
-    int k = 1000;
+    //int k = 1000;
+    //while (k > 0)
+    //{
+    //    test::DistributivityTest();
+    //    //test::ConnectivityTest();
+    //    k--;
+    //}
+
+    int k = 30;
     while (k > 0)
     {
-        test::DistributivityTest();
-        //test::ConnectivityTest();
+        test::EliminationTest();
         k--;
     }
 

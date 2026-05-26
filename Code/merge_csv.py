@@ -2,8 +2,8 @@ import os
 import glob
 import pandas as pd
 
-input_dir = r"C:\Users\jkopystianski\OneDrive - Infor\Desktop\PracaMgr\DFTA\OfficialResults\Distributivity"
-output_file = os.path.join(input_dir, "merged_results.csv")
+input_dir = r"C:\Users\jkopystianski\OneDrive - Infor\Desktop\PracaMgr\DFTA\OfficialResults\Elimination"
+output_file = os.path.join(input_dir, "elimination_merged_results.csv")
 
 csv_files = glob.glob(os.path.join(input_dir, "*.csv"))
 

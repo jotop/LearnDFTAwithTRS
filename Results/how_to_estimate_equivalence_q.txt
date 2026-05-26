@@ -1,0 +1,68 @@
+==========================================================
+Blind Teacher Experiment
+==========================================================
+
+Goal: Determine how many random membership queries are needed
+to simulate an equivalence query with a given confidence level.
+
+Method: For each state count, we generate pairs of non-equivalent
+random tree automata and measure how many random trees we need to
+test before finding a counterexample (a tree accepted by one but
+not the other). We repeat this many times and report percentiles.
+
+Interpretation: If the table says '150' at 90% for 20 states,
+it means that testing 150 random trees is enough to find a
+counterexample in 90% of cases when the automata differ.
+
+Parameters:
+  - Max tree depth: 100
+  - Trials per state count: 200
+  - Max queries budget: 100000000
+==========================================================
+
+Running experiment for 5 states...
+  States: 5 | 70%%: 266 | 80%%: 607 | 90%%: 2220 | 99%%: 22599 queries
+Running experiment for 10 states...
+  States: 10 | 70%%: 2401 | 80%%: 8389 | 90%%: 41720 | 99%%: 736305 queries
+Running experiment for 15 states...
+  States: 15 | 70%%: 8287 | 80%%: 24071 | 90%%: 143871 | 99%%: 4575189 queries
+Running experiment for 20 states...
+  States: 20 | 70%%: 28115 | 80%%: 79623 | 90%%: 231733 | 99%%: 16964710 queries
+Running experiment for 25 states...
+  States: 25 | 70%%: 62428 | 80%%: 141483 | 90%%: 549957 | 99%%: 65169439 queries
+Running experiment for 30 states...
+  States: 30 | 70%%: 130941 | 80%%: 466528 | 90%%: 4026491 | 99%%: 100000000 queries
+Running experiment for 35 states...
+  States: 35 | 70%%: 321045 | 80%%: 1023352 | 90%%: 3648864 | 99%%: 58956268 queries
+Running experiment for 40 states...
+  States: 40 | 70%%: 380678 | 80%%: 697866 | 90%%: 2674970 | 99%%: 45870917 queries
+Running experiment for 45 states...
+  States: 45 | 70%%: 496829 | 80%%: 1576163 | 90%%: 5290671 | 99%%: 100000000 queries
+Running experiment for 50 states...
+  States: 50 | 70%%: 558681 | 80%%: 1185644 | 90%%: 3408328 | 99%%: 100000000 queries
+
+==========================================================
+Summary Table: Queries needed for confidence level
+==========================================================
+States            70%        80%        90%        99%
+----------------------------------------------------------
+5                 266        607       2220      22599
+10               2401       8389      41720     736305
+15               8287      24071     143871    4575189
+20              28115      79623     231733   16964710
+25              62428     141483     549957   65169439
+30             130941     466528    4026491        MAX
+35             321045    1023352    3648864   58956268
+40             380678     697866    2674970   45870917
+45             496829    1576163    5290671        MAX
+50             558681    1185644    3408328        MAX
+==========================================================
+
+
+Summary:
+
+For the 99th percentile confidence of finding a counterexample between two non-equivalent tree automata with n states (valid for n ≤ 25, tree depth ≥ 100):
+
+Estimation function: 7 · n⁵
+
+This gives a tight approximation of the number of random membership queries needed to simulate one equivalence query with 99% confidence. It slightly overestimates, making it a safe budget for the blind teacher approach in L*.
